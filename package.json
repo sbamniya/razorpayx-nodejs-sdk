@@ -1,0 +1,26 @@
+{
+  "name": "razorpayx-nodejs-sdk",
+  "version": "1.0.0",
+  "description": "This is implementation of razorpayx api in NodeJS",
+  "main": "src/index.js",
+  "scripts": {},
+  "author": "Sonu Bamniya",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbamniya/razorpayx-nodejs-sdk.git"
+  },
+  "keywords": [
+    "nodejs",
+    "razorpayx",
+    "razorpayx-sdk",
+    "razorpayx-nodejs-sdk"
+  ],
+  "bugs": {
+    "url": "https://github.com/sbamniya/razorpayx-nodejs-sdk/issues"
+  },
+  "homepage": "https://github.com/sbamniya/razorpayx-nodejs-sdk#readme",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
