@@ -5,7 +5,7 @@ const ApiHelper = require("./utills/ApiHelper");
  * @param {Filter} filter
  * @returns {Promise<Object>} any
  */
-const getAll = async (accountNumber, filter = {}) => {
+const getAll = async function (accountNumber, filter = {}) {
   return await new ApiHelper().call(`/transactions`, ``, "GET", {
     account_number: accountNumber,
     ...filter,
@@ -16,7 +16,7 @@ const getAll = async (accountNumber, filter = {}) => {
  * @param {string} transactionId
  * @returns {Promise<Object>} any
  */
-const get = async (transactionId) => {
+const get = async function (transactionId) {
   return await new ApiHelper().call(
     `/transactions`,
     `/${transactionId}`,

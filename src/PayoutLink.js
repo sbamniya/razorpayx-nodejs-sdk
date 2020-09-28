@@ -4,7 +4,7 @@ const ApiHelper = require("./utills/ApiHelper");
  * @param {PayoutLinkInfo} payoutLinkInfo
  * @returns {Promise<Object>} any
  */
-const create = async (payoutLinkInfo) => {
+const create = async function (payoutLinkInfo) {
   return await new ApiHelper().call(
     `/payout-links`,
     ``,
@@ -18,7 +18,7 @@ const create = async (payoutLinkInfo) => {
  * @param {Filter} filter
  * @returns {Promise<Object>} any
  */
-const getAll = async (filter = {}) => {
+const getAll = async function (filter = {}) {
   return await new ApiHelper().call(`/payout-links`, ``, "GET", filter);
 };
 
@@ -27,7 +27,7 @@ const getAll = async (filter = {}) => {
  * @param {string} payoutLinkId
  * @returns {Promise<Object>} any
  */
-const get = async (payoutLinkId) => {
+const get = async function (payoutLinkId) {
   return await new ApiHelper().call(`/payout-links`, `/${payoutLinkId}`, "GET");
 };
 /**
@@ -35,7 +35,7 @@ const get = async (payoutLinkId) => {
  * @param {string} payoutLinkId
  * @returns {Promise<Object>} any
  */
-const cancel = async (payoutLinkId) => {
+const cancel = async function (payoutLinkId) {
   return await new ApiHelper().call(
     `/payout-links`,
     `/${payoutLinkId}/${cancel}`,

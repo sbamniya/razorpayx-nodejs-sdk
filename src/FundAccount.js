@@ -4,7 +4,7 @@ const ApiHelper = require("./utills/ApiHelper");
  * @param {AccountInfo} accountInfo
  * @returns {Promise<Object>} any
  */
-const create = async (accountInfo) => {
+const create = async function (accountInfo) {
   return await new ApiHelper().call(
     `/fund_accounts`,
     ``,
@@ -18,7 +18,7 @@ const create = async (accountInfo) => {
  * @param {AccountInfo} accountInfo
  * @returns {Promise<Object>} any
  */
-const createPublic = async (accountInfo) => {
+const createPublic = async function (accountInfo) {
   return await new ApiHelper().call(
     `/fund_accounts`,
     `/${public}`,
@@ -32,7 +32,7 @@ const createPublic = async (accountInfo) => {
  * @param {filter} filter
  * @returns {Promise<Object>} any
  */
-const getAll = async (filter = {}) => {
+const getAll = async function (filter = {}) {
   return await new ApiHelper().call(`/fund_accounts`, ``, "GET", filter);
 };
 /**
@@ -40,7 +40,7 @@ const getAll = async (filter = {}) => {
  * @param {string} accountId
  * @returns {Promise<Object>} any
  */
-const get = async (accountId) => {
+const get = async function (accountId) {
   return await new ApiHelper().call(`/fund_accounts`, `/${accountId}`, "GET");
 };
 
@@ -49,7 +49,7 @@ const get = async (accountId) => {
  * @param {string} accountId
  * @returns {Promise<Object>} any
  */
-const activate = async (accountId) => {
+const activate = async function (accountId) {
   return await new ApiHelper().call(
     `/fund_accounts`,
     `/${accountId}`,
@@ -66,7 +66,7 @@ const activate = async (accountId) => {
  * @param {string} accountId
  * @returns {Promise<Object>} any
  */
-const deactivate = async (accountId) => {
+const deactivate = async function (accountId) {
   return await new ApiHelper().call(
     `/fund_accounts`,
     `/${accountId}`,

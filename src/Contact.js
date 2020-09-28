@@ -4,7 +4,7 @@ const ApiHelper = require("./utills/ApiHelper");
  * @param {ContactItem} contactInfo
  * @returns {Promise<Object>} any
  */
-const create = async (contactInfo) => {
+const create = async function (contactInfo) {
   return await new ApiHelper().call(
     `/contacts`,
     ``,
@@ -19,7 +19,7 @@ const create = async (contactInfo) => {
  * @param {ContactItem} contactInfo
  * @returns {Promise<Object>} any
  */
-const update = async (contactId, contactInfo) => {
+const update = async function (contactId, contactInfo) {
   return await new ApiHelper().call(
     `/contacts`,
     `/${contactId}`,
@@ -34,7 +34,7 @@ const update = async (contactId, contactInfo) => {
  * @param {filters} filters optional id
  * @returns {Promise<Object>} any
  */
-const getAll = async (filters = {}) => {
+const getAll = async function (filters = {}) {
   return await new ApiHelper().call(`/contacts`, ``, "GET", filters);
 };
 
@@ -43,7 +43,7 @@ const getAll = async (filters = {}) => {
  * @param {filters} filters optional id
  * @returns {Promise<Object>} any
  */
-const get = async (contactId) => {
+const get = async function (contactId) {
   return await new ApiHelper().call(`/contacts`, `/${contactId}`, "GET");
 };
 /**
@@ -51,7 +51,7 @@ const get = async (contactId) => {
  * @param {string} contactId
  * @returns {Promise<Object>} any
  */
-const activate = async (contactId) => {
+const activate = async function (contactId) {
   return await new ApiHelper().call(
     `/contacts`,
     `/${contactId}`,
@@ -66,7 +66,7 @@ const activate = async (contactId) => {
  * @param {string} contactId
  * @returns {Promise<Object>} any
  */
-const deactivate = async (contactId) => {
+const deactivate = async function (contactId) {
   return await new ApiHelper().call(
     `/contacts`,
     `/${contactId}`,

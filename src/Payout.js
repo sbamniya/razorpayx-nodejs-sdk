@@ -4,7 +4,7 @@ const ApiHelper = require("./utills/ApiHelper");
  * @param {PayoutInfo} payoutInfo (https://razorpay.com/docs/razorpayx/api/payouts/#create-a-payout)
  * @returns {Promise<Object>} any
  */
-const create = async (payoutInfo) => {
+const create = async function (payoutInfo) {
   return await new ApiHelper().call(
     `/payouts`,
     ``,
@@ -19,7 +19,7 @@ const create = async (payoutInfo) => {
  * @param {Filter} filter (https://razorpay.com/docs/razorpayx/api/payouts/#fetch-all-payouts)
  * @returns {Promise<Object>} any
  */
-const getAll = async (accountNumber, filter = {}) => {
+const getAll = async function (accountNumber, filter = {}) {
   return await new ApiHelper().call(`/payouts`, ``, "GET", {
     account_number: accountNumber,
     ...filter,
@@ -31,7 +31,7 @@ const getAll = async (accountNumber, filter = {}) => {
  * @param {string} payoutId
  * @returns {Promise<Object>} any
  */
-const get = async (payoutId) => {
+const get = async function (payoutId) {
   return await new ApiHelper().call(`/payouts`, `/${payoutId}`, "GET");
 };
 /**
@@ -39,7 +39,7 @@ const get = async (payoutId) => {
  * @param {string} payoutId
  * @returns {Promise<Object>} any
  */
-const cancel = async (payoutId) => {
+const cancel = async function (payoutId) {
   return await new ApiHelper().call(
     `/payouts`,
     `/${payoutId}/${cancel}`,

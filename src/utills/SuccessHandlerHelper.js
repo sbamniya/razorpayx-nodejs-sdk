@@ -21,9 +21,8 @@ class SuccessHandlerHelper {
   /**
    *
    */
-  setSucccess = () => {
+  setSucccess() {
     const messages = [];
-
     for (let i in this.rawData) {
       if (typeof this.rawData[i] === "string") {
         messages.push(this.rawData[i]);
@@ -31,7 +30,7 @@ class SuccessHandlerHelper {
     }
     this.data.data = this.rawData;
     this.data.messages = messages;
-  };
+  }
 }
 
 module.exports = SuccessHandlerHelper;

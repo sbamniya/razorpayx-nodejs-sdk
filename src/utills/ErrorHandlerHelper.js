@@ -22,7 +22,7 @@ class ErrorHandlerHelper {
   /**
    *
    */
-  setError = () => {
+  setError() {
     this.error.code = this.rawError ? this.rawError.code : this.error.code;
     this.error.timestamp = Date.now();
     this.error.messages = [];
@@ -38,7 +38,7 @@ class ErrorHandlerHelper {
       this.error.error = "Unknown";
       this.error.messages = ["An unexpected error occured."];
     }
-  };
+  }
 }
 
 module.exports = ErrorHandlerHelper;

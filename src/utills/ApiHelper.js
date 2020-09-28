@@ -10,9 +10,9 @@ class ApiHelper {
     this._portalGateway = "https://api.razorpay.com";
     this._apiVersion = process.env.RAZORPAYX_API_VERSION || "/v1";
   }
-  setApiVersion = (version) => {
+  setApiVersion(version) {
     this._apiVersion = version;
-  };
+  }
   /**
    * Fetches from the Gateway defined by the instantiated object. Accepts <T> as output object.
    * @example <caption>"/Auth/UserAccount", "/GetCurrentUser", "GET"</caption>
