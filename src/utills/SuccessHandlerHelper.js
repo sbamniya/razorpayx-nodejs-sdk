@@ -1,21 +1,20 @@
 /**
- * ErrorHandlerHelper Class - For managing errors
+ * ErrorHandlerHelper Class - For managing success message
  */
 class SuccessHandlerHelper {
-  rawData;
-  data = {
-    code: 200,
-    isError: false,
-    timestamp: Date.now(),
-    error: undefined,
-    messages: [],
-  };
   /**
    *
    * @param {*} data
    */
   constructor(data) {
     this.rawData = data;
+    this.data = {
+      code: 200,
+      isError: false,
+      timestamp: Date.now(),
+      error: undefined,
+      messages: [],
+    };
     this.setSucccess();
   }
   /**
