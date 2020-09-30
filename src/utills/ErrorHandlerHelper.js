@@ -2,21 +2,20 @@
  * ErrorHandlerHelper Class - For managing errors
  */
 class ErrorHandlerHelper {
-  rawError;
-  error = {
-    code: 500,
-    isError: true,
-    timestamp: Date.now(),
-    error: "Unknown error",
-    messages: [],
-    data: undefined,
-  };
   /**
    *
    * @param {*} err
    */
   constructor(err) {
     this.rawError = err;
+    this.error = {
+      code: 500,
+      isError: true,
+      timestamp: Date.now(),
+      error: "Unknown error",
+      messages: [],
+      data: undefined,
+    };
     this.setError();
   }
   /**
