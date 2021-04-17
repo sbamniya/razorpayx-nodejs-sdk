@@ -42,7 +42,7 @@ const get = async function (payoutId) {
 const cancel = async function (payoutId) {
   return await new ApiHelper().call(
     `/payouts`,
-    `/${payoutId}/${cancel}`,
+    `/${payoutId}/cancel`,
     "POST"
   );
 };
