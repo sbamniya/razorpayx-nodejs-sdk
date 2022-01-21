@@ -38,7 +38,7 @@ const get = async function (payoutLinkId) {
 const cancel = async function (payoutLinkId) {
   return await new ApiHelper().call(
     `/payout-links`,
-    `/${payoutLinkId}/${cancel}`,
+    `/${payoutLinkId}/cancel`,
     "POST"
   );
 };
