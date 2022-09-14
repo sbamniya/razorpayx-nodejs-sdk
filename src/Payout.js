@@ -5,13 +5,7 @@ const ApiHelper = require("./utills/ApiHelper");
  * @returns {Promise<Object>} any
  */
 const create = async function (payoutInfo) {
-  return await new ApiHelper().call(
-    `/payouts`,
-    ``,
-    "POST",
-    undefined,
-    payoutInfo
-  );
+  return await new ApiHelper().call(`/payouts`, ``, "POST", payoutInfo);
 };
 /**
  * Fetches all payout
@@ -20,7 +14,7 @@ const create = async function (payoutInfo) {
  * @returns {Promise<Object>} any
  */
 const getAll = async function (accountNumber, filter = {}) {
-  return await new ApiHelper().call(`/payouts`, ``, "GET", {
+  return await new ApiHelper().call(`/payouts`, "", "GET", {
     account_number: accountNumber,
     ...filter,
   });
@@ -40,11 +34,7 @@ const get = async function (payoutId) {
  * @returns {Promise<Object>} any
  */
 const cancel = async function (payoutId) {
-  return await new ApiHelper().call(
-    `/payouts`,
-    `/${payoutId}/cancel`,
-    "POST"
-  );
+  return await new ApiHelper().call(`/payouts`, `/${payoutId}/cancel`, "POST");
 };
 /**
  *

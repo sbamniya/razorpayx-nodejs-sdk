@@ -9,7 +9,6 @@ const create = async function (payoutLinkInfo) {
     `/payout-links`,
     ``,
     "POST",
-    undefined,
     payoutLinkInfo
   );
 };

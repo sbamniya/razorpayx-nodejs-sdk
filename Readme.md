@@ -139,6 +139,14 @@ Example:
 RazorPayFundAccount.get("account_id")
 ```
 
+
+`validate` - Validate the account
+
+```
+RazorPayFundAccount.validate(account)
+```
+You can find `account` possibles values for validating bank [here](https://razorpay.com/docs/api/x/account-validation#request-parameters-3) and for validating VPA [here](https://razorpay.com/docs/api/x/account-validation#request-parameters-7)
+
 `activate` - Activate fund account by account id
 
 ```
