@@ -45,7 +45,7 @@ const get = async function (accountId) {
 };
 
 /**
- * validate the func account
+ * validate the fund account
  * @param {AccountInfo} accountInfo
  * @returns {Promise<Object>} any
  */
@@ -54,7 +54,6 @@ const validate = async function (accountInfo) {
     `/fund_accounts`,
     `/validations`,
     "POST",
-    undefined,
     accountInfo
   );
 };
@@ -69,8 +68,7 @@ const activate = async function (accountId) {
     `/fund_accounts`,
     `/${accountId}`,
     "PATCH",
-    undefined,
-    {
+   {
       active: true,
     }
   );
@@ -86,7 +84,6 @@ const deactivate = async function (accountId) {
     `/fund_accounts`,
     `/${accountId}`,
     "PATCH",
-    undefined,
     {
       active: false,
     }
