@@ -1,4 +1,4 @@
-const ApiHelper = require("./utills/ApiHelper");
+const ApiHelper = require("./utils/RestClient");
 /**
  * Creates a payout for the given details
  * @param {PayoutInfo} payoutInfo (https://razorpay.com/docs/razorpayx/api/payouts/#create-a-payout)

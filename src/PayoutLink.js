@@ -1,4 +1,4 @@
-const ApiHelper = require("./utills/ApiHelper");
+const ApiHelper = require("./utils/RestClient");
 /**
  * Creates a payout link for the given details
  * @param {PayoutLinkInfo} payoutLinkInfo

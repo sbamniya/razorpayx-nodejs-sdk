@@ -1,4 +1,4 @@
-const ApiHelper = require("./utills/ApiHelper");
+const ApiHelper = require("./utils/RestClient");
 /**
  * Fetches all transaction for account
  * @param {string} accountNumber
