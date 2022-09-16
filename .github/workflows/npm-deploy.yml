@@ -13,7 +13,5 @@ jobs:
           node-version: 16.x
       - name: Run npm install
         run: npm install
-      - name: Run tests
-        run: npm test
       - name: Release
         run: npm run release
