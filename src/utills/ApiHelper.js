@@ -22,39 +22,27 @@ class ApiHelper {
    * @param {queryOptions} Query - query options for "GET" methods (Optional)
    * @param {body} body - JSON body for "UPDATE, DELETE and POST" methods (Optional)
    */
-  async call(
-    service,
-    endpoint,
-    method,
-    queryOptions = undefined,
-    body = undefined,
-    options = {}
-  ) {
+  async call(service, endpoint, method, data = {}, options = {}) {
     options.method = method;
-    let url = `${this._apiVersion}${service}${endpoint}`;
+    const url = `${this._apiVersion}${service}${endpoint}`;
     if (!options.headers) {
       options.headers = { "Content-Type": "application/json" };
     }
     options.headers.Authorization = `Basic ${Buffer.from(
       `${process.env.RAZORPAYX_API_KEY}:${process.env.RAZORPAYX_API_PRIVATE_SECRET}`
     ).toString("base64")}`;
-    // html query for "GET", json body for others.
-    if (queryOptions && typeof queryOptions === "object") {
-      let queryParams = [];
-      Object.keys(queryOptions).map((key) => {
-        queryParams.push(`${key}=${queryOptions[key]}`);
-        return key;
-      });
-      url += `?${queryParams.join("&")}`;
+
+    if (method.toLowerCase() === "get") {
+      options.params = data;
+    } else {
+      options.data = data;
     }
 
-    if (body) {
-      options.data = body;
-    }
     try {
-      let response = await Axios({
+      const response = await Axios({
         ...options,
-        url: `${this._portalGateway}${url}`,
+        baseURL: this._portalGateway,
+        url,
       });
 
       if (response.status < 200 || response.status >= 300) {

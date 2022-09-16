@@ -9,7 +9,6 @@ const create = async function (contactInfo) {
     `/contacts`,
     ``,
     "POST",
-    undefined,
     contactInfo
   );
 };
@@ -24,7 +23,6 @@ const update = async function (contactId, contactInfo) {
     `/contacts`,
     `/${contactId}`,
     "PATCH",
-    undefined,
     contactInfo
   );
 };

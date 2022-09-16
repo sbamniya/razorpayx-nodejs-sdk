@@ -45,6 +45,20 @@ const get = async function (accountId) {
 };
 
 /**
+ * validate the fund account
+ * @param {AccountInfo} accountInfo
+ * @returns {Promise<Object>} any
+ */
+const validate = async function (accountInfo) {
+  return await new ApiHelper().call(
+    `/fund_accounts`,
+    `/validations`,
+    "POST",
+    accountInfo
+  );
+};
+
+/**
  * Activates a fund account
  * @param {string} accountId
  * @returns {Promise<Object>} any
@@ -54,8 +68,7 @@ const activate = async function (accountId) {
     `/fund_accounts`,
     `/${accountId}`,
     "PATCH",
-    undefined,
-    {
+   {
       active: true,
     }
   );
@@ -71,11 +84,18 @@ const deactivate = async function (accountId) {
     `/fund_accounts`,
     `/${accountId}`,
     "PATCH",
-    undefined,
     {
       active: false,
     }
   );
 };
 
-module.exports = { create, createPublic, getAll, get, activate, deactivate };
+module.exports = {
+  create,
+  createPublic,
+  getAll,
+  get,
+  activate,
+  deactivate,
+  validate,
+};
