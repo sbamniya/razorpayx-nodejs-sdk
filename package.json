@@ -3,7 +3,9 @@
   "version": "1.2.0",
   "description": "This is implementation of razorpayx api in NodeJS",
   "main": "src/index.js",
-  "scripts": {},
+  "scripts": {
+    "release": "semantic-release"
+  },
   "author": "Sonu Bamniya",
   "license": "MIT",
   "repository": {
@@ -22,5 +24,19 @@
   "homepage": "https://github.com/sbamniya/razorpayx-nodejs-sdk#readme",
   "dependencies": {
     "axios": "0.27.2"
+  },
+  "devDependencies": {
+    "@semantic-release/git": "10.0.1",
+    "@semantic-release/github": "8.0.6"
+  },
+  "release": {
+    "branches": [
+      "master"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
   }
 }
