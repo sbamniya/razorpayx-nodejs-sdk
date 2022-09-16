@@ -2,6 +2,8 @@ on:
   push:
     branches:
       - master
+env:
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
   publish:
