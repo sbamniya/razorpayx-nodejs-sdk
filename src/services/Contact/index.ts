@@ -1,5 +1,5 @@
-import RestClient from "../../utils/RestClient";
 import { GenericFields, Pageable, Response } from "../../types/generic";
+import RestClient from "../../utils/RestClient";
 
 export interface Contact extends Omit<GenericFields, "entity"> {
   entity: "contact";
@@ -10,41 +10,47 @@ export interface Contact extends Omit<GenericFields, "entity"> {
   reference_id?: string;
   notes?: Record<string, string>;
 }
-
-const RPXContact = (client: RestClient) => {
+class RPXContact {
+  client: RestClient;
+  constructor(client: RestClient) {
+    this.client = client;
+  }
   /**
    * Creates a contact for the account
-   * @param {Contact} contactInfo
-   * @returns {Promise<Response<Contact>>}
+   * @link https://razorpay.com/docs/api/x/contacts#create-a-contact
    */
-  const create = async (
+  async create(
     contactInfo: Omit<
       Contact,
       "id" | "entity" | "batch_id" | "created_at" | "active"
     >
-  ): Promise<Contact> => client.load<Contact>("/contacts", "POST", contactInfo);
+  ): Promise<Contact> {
+    return this.client.load<Contact>("/contacts", "POST", contactInfo);
+  }
 
   /**
    * updates a contact for the account
-   * @param {string} contactId
-   * @param {Contact} contactInfo
-   * @returns {Promise<Object>} any
+   * @link https://razorpay.com/docs/api/x/contacts#update-a-contact
    */
-  const update = async (
+  async update(
     contactId: Contact["id"],
     contactInfo: Omit<
       Contact,
       "id" | "entity" | "batch_id" | "created_at" | "active"
     >
-  ): Promise<void> =>
-    client.load<void>(`/contacts/${contactId}`, "PATCH", contactInfo);
+  ): Promise<void> {
+    return this.client.load<void>(
+      `/contacts/${contactId}`,
+      "PATCH",
+      contactInfo
+    );
+  }
 
   /**
    * Fetches all contacts the account
-   * @param {Pageable} filters optional id
-   * @returns {Promise<Object>} any
+   * @link https://razorpay.com/docs/api/x/contacts#fetch-all-contacts
    */
-  const getAll = async (
+  async getAll(
     filters: Pageable &
       Partial<
         Pick<
@@ -52,38 +58,37 @@ const RPXContact = (client: RestClient) => {
           "name" | "email" | "contact" | "reference_id" | "active" | "type"
         >
       > = {}
-  ): Promise<Response<Contact>> =>
-    client.load<Response<Contact>>("/contacts", "GET", filters);
+  ): Promise<Response<Contact>> {
+    return this.client.load<Response<Contact>>("/contacts", "GET", filters);
+  }
 
   /**
    * Fetches details of a contact
-   * @param {Contact["id"]} contactId optional id
-   * @returns {Promise<Contact>} any
+   * @link https://razorpay.com/docs/api/x/contacts#fetch-a-contact-by-id
    */
-  const get = async (contactId: Contact["id"]): Promise<Contact> =>
-    client.load<Contact>(`/contacts/${contactId}`);
+  async get(contactId: Contact["id"]): Promise<Contact> {
+    return this.client.load<Contact>(`/contacts/${contactId}`);
+  }
 
   /**
    * Activates a contact
-   * @param {string} contactId
-   * @returns {Promise<Object>} any
+   * @link https://razorpay.com/docs/api/x/contacts#activate-or-deactivate-a-contact
    */
-  const activate = async (contactId: Contact["id"]): Promise<void> =>
-    client.load<void>(`/contacts/${contactId}`, "PATCH", {
+  async activate(contactId: Contact["id"]): Promise<void> {
+    return this.client.load<void>(`/contacts/${contactId}`, "PATCH", {
       active: true,
     });
+  }
 
   /**
    * Deactivates a contact
-   * @param {string} contactId
-   * @returns {Promise<Object>} any
+   * @link https://razorpay.com/docs/api/x/contacts#activate-or-deactivate-a-contact
    */
-  const deactivate = async (contactId: Contact["id"]): Promise<void> =>
-    client.load<void>(`/contacts/${contactId}`, "PATCH", {
+  async deactivate(contactId: Contact["id"]): Promise<void> {
+    return this.client.load<void>(`/contacts/${contactId}`, "PATCH", {
       active: false,
     });
-
-  return { create, update, getAll, get, activate, deactivate };
-};
+  }
+}
 
 export default RPXContact;

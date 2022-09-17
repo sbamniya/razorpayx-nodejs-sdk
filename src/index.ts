@@ -1,10 +1,13 @@
 import RPXContact from "./services/Contact";
 import RPXAccount from "./services/FundAccount";
+import RPXPayout from "./services/Payout";
+import RPXPayoutLink from "./services/PayoutLink";
+import RPXTransactions from "./services/Transactions";
 import RestClient from "./utils/RestClient";
 
-const RazorpayX = (key: string, secret: string, baseURL?: string) => {
-  if (!key || secret) {  
-    throw new Error(`Please pass API key and secret.`)
+export const RazorpayX = (key: string, secret: string, baseURL?: string) => {
+  if (!key || secret) {
+    throw new Error("Please pass API key and secret.");
   }
 
   const client = new RestClient({
@@ -14,8 +17,11 @@ const RazorpayX = (key: string, secret: string, baseURL?: string) => {
   });
 
   return {
-    Contact: RPXContact(client),
-    FundAccount: RPXAccount(client),
+    Contact: new RPXContact(client),
+    FundAccount: new RPXAccount(client),
+    Payout: new RPXPayout(client),
+    PayoutLink: new RPXPayoutLink(client),
+    Transactions: new RPXTransactions(client)
   };
 };
 
