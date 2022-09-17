@@ -2,8 +2,11 @@
   "name": "razorpayx-nodejs-sdk",
   "version": "1.2.0",
   "description": "This is implementation of razorpayx api in NodeJS",
-  "main": "src/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
+    "doc": "./node_modules/.bin/typedoc --entryPointStrategy expand ./src --out docs .",
     "release": "semantic-release"
   },
   "author": "Sonu Bamniya",
@@ -28,7 +31,10 @@
   "devDependencies": {
     "@semantic-release/git": "10.0.1",
     "@semantic-release/github": "8.0.6",
-    "semantic-release": "19.0.5"
+    "@types/node": "^18.7.18",
+    "semantic-release": "19.0.5",
+    "typedoc": "^0.23.14",
+    "typescript": "^4.8.3"
   },
   "release": {
     "branches": [

@@ -1,12 +1,9 @@
 # RazorpayX NodeJS SDK
 
-Note: This is not a official sdk.
+Note: This is not an official sdk.
 
 Read documentation here: https://razorpay.com/docs/razorpayx/api/
 
-## Prequisite
-
-This project uses env variables to read the RazorPayX Key and secret, so you need to have a package like [dotenv](https://www.npmjs.com/package/dotenv) or [dotenv-flow](https://www.npmjs.com/package/dotenv-flow) to make the `.env` file readable. Also, it is developed using `ECMASCript2015`, so it won't work with older versions of NodeJS.
 
 ## Installation
 
@@ -18,20 +15,11 @@ This project uses env variables to read the RazorPayX Key and secret, so you nee
 
 ## Usage
 
-<p>Create new file if not exists. And add follwing two lines in the file.</p>
-
 ```
-RAZORPAYX_API_KEY=your_razorpayx_api_key
-RAZORPAYX_API_PRIVATE_SECRET=your_razorpayx_api_screet
-```
-
-and then
-
-```
-const { RazorPayContact } = require("razorpayx-nodejs-sdk");
+const { Contact } = require("razorpayx-nodejs-sdk")("key", "secret");
 
 // create new contact
-RazorPayContact.create({
+Contact.create({
   name: "Demo User",
   email: "demo@example.com",
   contact: "12131213113"
@@ -42,16 +30,16 @@ RazorPayContact.create({
 ## Services
 
 <ol>
-<li><a href="#razorpaycontact">RazorPayContact</a></li>
-<li><a href="#razorpayfundaccount">RazorPayFundAccount</a></li>
-<li><a href="#razorpaypayout">RazorPayPayout</a></li>
-<li><a href="#razorpaypayoutlink">RazorPayPayoutLink</a></li>
-<li><a href="#razorpaytransactions">RazorPayTransactions</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a href="#fundaccount">FundAccount</a></li>
+<li><a href="#payout">Payout</a></li>
+<li><a href="#payoutlink">PayoutLink</a></li>
+<li><a href="#transactions">Transactions</a></li>
 </ol>
 
-### RazorPayContact
+### Contact
 
-A contact is an entity to whom payouts can be made through supported modes such as UPI, IMPS, NEFT and RTGS.
+A Contact is an entity to whom payouts can be made through supported modes such as UPI, IMPS, NEFT and RTGS.
 
 #### Available Methods
 
@@ -59,14 +47,14 @@ A contact is an entity to whom payouts can be made through supported modes such 
 Example:
 
 ```
-RazorPayContact.create(contactInfo)
+Contact.create(contactInfo)
 ```
 
 `update` - updates a contact
 Example:
 
 ```
-RazorPayContact.update("contact_id", contactInfo)
+Contact.update("contact_id", contactInfo)
 ```
 
 You can find `contactInfo` possibles values [here](https://razorpay.com/docs/razorpayx/api/contacts/#request-parameters).
@@ -75,7 +63,7 @@ You can find `contactInfo` possibles values [here](https://razorpay.com/docs/raz
 Example:
 
 ```
-RazorPayContact.getAll(filterOptions)
+Contact.getAll(filterOptions)
 ```
 
 You can find `filterOptions` possibles values [here](https://razorpay.com/docs/razorpayx/api/contacts/#query-parameters)
@@ -85,22 +73,22 @@ You can find `filterOptions` possibles values [here](https://razorpay.com/docs/r
 Example:
 
 ```
-RazorPayContact.get("contact_id")
+Contact.get("contact_id")
 ```
 
 `activate` - Activate contact by contact id
 
 ```
-RazorPayContact.activate("contact_id")
+Contact.activate("contact_id")
 ```
 
 `deactivate` - Deactivate contact by contact id
 
 ```
-RazorPayContact.deactivate("contact_id")
+Contact.deactivate("contact_id")
 ```
 
-### RazorPayFundAccount
+### FundAccount
 
 Fund accounts are accounts associated with a contact. Payouts are made to fund accounts.
 
@@ -110,7 +98,7 @@ Fund accounts are accounts associated with a contact. Payouts are made to fund a
 Example:
 
 ```
-RazorPayFundAccount.create(accountInfo)
+FundAccount.create(accountInfo)
 ```
 
 You can find `accountInfo` possibles values [here](https://razorpay.com/docs/razorpayx/api/fund-accounts/#request-parameters)
@@ -118,7 +106,7 @@ You can find `accountInfo` possibles values [here](https://razorpay.com/docs/raz
 `createPublic` - Creates a public fund account for a contact, this is specifically used for Card payout. Read more [here](https://razorpay.com/docs/razorpayx/api/payouts-cards/)
 
 ```
-RazorPayFundAccount.createPublic(accountInfo)
+FundAccount.createPublic(accountInfo)
 ```
 
 You can find `accountInfo` possibles values [here](https://razorpay.com/docs/razorpayx/api/fund-accounts/#request-parameters)
@@ -126,7 +114,7 @@ You can find `accountInfo` possibles values [here](https://razorpay.com/docs/raz
 `getAll` - Fetches all the fund accounts
 
 ```
-RazorPayFundAccount.getAll(filterOptions)
+FundAccount.getAll(filterOptions)
 ```
 
 You can find `filterOptions` possibles values [here](https://razorpay.com/docs/razorpayx/api/fund-accounts/#query-parameters)
@@ -136,30 +124,30 @@ You can find `filterOptions` possibles values [here](https://razorpay.com/docs/r
 Example:
 
 ```
-RazorPayFundAccount.get("account_id")
+FundAccount.get("account_id")
 ```
 
 
 `validate` - Validate the account
 
 ```
-RazorPayFundAccount.validate(account)
+FundAccount.validate(account)
 ```
 You can find `account` possibles values for validating bank [here](https://razorpay.com/docs/api/x/account-validation#request-parameters-3) and for validating VPA [here](https://razorpay.com/docs/api/x/account-validation#request-parameters-7)
 
 `activate` - Activate fund account by account id
 
 ```
-RazorPayFundAccount.activate("account_id")
+FundAccount.activate("account_id")
 ```
 
 `deactivate` - Deactivate fund account by account id
 
 ```
-RazorPayFundAccount.deactivate("account_id")
+FundAccount.deactivate("account_id")
 ```
 
-### RazorPayPayout
+### Payout
 
 A payout is the transfer of funds from your business account to a contact's fund account.
 
@@ -169,7 +157,7 @@ A payout is the transfer of funds from your business account to a contact's fund
 Example:
 
 ```
-RazorPayPayout.create(payoutInfo)
+Payout.create(payoutInfo)
 ```
 
 You can find `payoutInfo` possibles values [here](https://razorpay.com/docs/razorpayx/api/payouts/#request-parameters)
@@ -177,7 +165,7 @@ You can find `payoutInfo` possibles values [here](https://razorpay.com/docs/razo
 `getAll` - Fetches all the payouts
 
 ```
-RazorPayPayout.getAll(account_number, filterOptions)
+Payout.getAll(account_number, filterOptions)
 ```
 
 `account_number`: The account from which you want to make the payout.
@@ -190,7 +178,7 @@ You can find `filterOptions` possibles values [here](https://razorpay.com/docs/r
 Example:
 
 ```
-RazorPayPayout.get("payout_id")
+Payout.get("payout_id")
 ```
 
 `cancel` - Cancels a `queued` payout.
@@ -200,10 +188,10 @@ RazorPayPayout.get("payout_id")
 </p>
 
 ```
-RazorPayPayout.cancel("payout_id")
+Payout.cancel("payout_id")
 ```
 
-### RazorPayPayoutLink
+### PayoutLink
 
 Payout Links enable you to make payouts to those contacts whose fund accounts details are not readily available with you. You can use these links to collect the customer's fund account details and then process refunds, reimbursement and cashbacks to them without additional follow up.
 
@@ -213,7 +201,7 @@ Payout Links enable you to make payouts to those contacts whose fund accounts de
 Example:
 
 ```
-RazorPayPayoutLink.create(payoutLinkInfo)
+PayoutLink.create(payoutLinkInfo)
 ```
 
 You can find `payoutLinkInfo` possibles values [here](https://razorpay.com/docs/razorpayx/api/payout-links/#request-parameters)
@@ -221,7 +209,7 @@ You can find `payoutLinkInfo` possibles values [here](https://razorpay.com/docs/
 `getAll` - Fetches all the payout links
 
 ```
-RazorPayPayoutLink.getAll(filterOptions)
+PayoutLink.getAll(filterOptions)
 ```
 
 You can find `filterOptions` possibles values [here](https://razorpay.com/docs/razorpayx/api/payout-links/#query-parameters)
@@ -231,7 +219,7 @@ You can find `filterOptions` possibles values [here](https://razorpay.com/docs/r
 Example:
 
 ```
-RazorPayPayoutLink.get("payout_link_id")
+PayoutLink.get("payout_link_id")
 ```
 
 `cancel` - Cancels a `issued` payout link.
@@ -241,10 +229,10 @@ RazorPayPayoutLink.get("payout_link_id")
 </p>
 
 ```
-RazorPayPayoutLink.cancel("payout_link_id")
+PayoutLink.cancel("payout_link_id")
 ```
 
-### RazorPayTransactions
+### Transactions
 
 The inflow of funds to your business account, payouts to a contact's fund account and reversals are all recorded as transactions against your business account. You can fetch details of a particular transaction or details of all transactions via the below APIs.
 
@@ -253,7 +241,7 @@ The inflow of funds to your business account, payouts to a contact's fund accoun
 `getAll` - Fetches all the transactions
 
 ```
-RazorPayTransactions.getAll(accountNumber, filterOptions)
+Transactions.getAll(accountNumber, filterOptions)
 ```
 
 `account_number`: The account from which you want to get the transaction details.
@@ -266,13 +254,13 @@ You can find `filterOptions` possibles values [here](https://razorpay.com/docs/r
 Example:
 
 ```
-RazorPayTransactions.get("transaction_id")
+Transactions.get("transaction_id")
 ```
 
 ## Issues
 
 If you find any issue please add it to the issues tab.
 
-> Missing any important feature?
+> Missing any important feature? Create an issue here: [here](https://github.com/sbamniya/razorpayx-nodejs-sdk/issues/new)
 
-> PRs are welcome.
+PRs are welcome.

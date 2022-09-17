@@ -15,5 +15,9 @@ jobs:
           node-version: 16.x
       - name: Run npm install
         run: npm install
+      - name: Generate Documentation
+        run: npm run doc
+      - name: Run build
+        run: npm run build
       - name: Release
         run: npm run release
