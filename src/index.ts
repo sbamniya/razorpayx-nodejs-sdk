@@ -6,7 +6,7 @@ import RPXTransactions from "./services/Transactions";
 import RestClient from "./utils/RestClient";
 
 export const RazorpayX = (key: string, secret: string, baseURL?: string) => {
-  if (!key || secret) {
+  if (!key || !secret) {
     throw new Error("Please pass API key and secret.");
   }
 
@@ -21,8 +21,10 @@ export const RazorpayX = (key: string, secret: string, baseURL?: string) => {
     FundAccount: new RPXAccount(client),
     Payout: new RPXPayout(client),
     PayoutLink: new RPXPayoutLink(client),
-    Transactions: new RPXTransactions(client)
+    Transactions: new RPXTransactions(client),
   };
 };
 
 export default RazorpayX;
+
+module.exports = RazorpayX;

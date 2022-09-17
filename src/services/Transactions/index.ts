@@ -2,8 +2,19 @@ import { GenericFields, Pageable, Response } from "../../types/generic";
 import RestClient from "../../utils/RestClient";
 import { Payout } from "../Payout";
 
-interface TreansactionSource {}
-interface Transaction extends GenericFields {
+export interface TransactionSource {
+  id: string;
+  entity: "payout" | "bank_transfer";
+  amount: number;
+  fund_account_id?: string;
+  notes?: Record<string, string>;
+  payer_name?: string;
+  payer_account?: string;
+  payer_ifsc?: string;
+  mode?: string;
+  bank_reference?: string;
+}
+export interface Transaction extends GenericFields {
   entity: "transaction";
   account_number: string;
   amount: number;
@@ -11,7 +22,7 @@ interface Transaction extends GenericFields {
   credit?: number;
   debit?: number;
   balance: number;
-  source: TreansactionSource;
+  source: TransactionSource;
   fees?: number;
   tax?: number;
   status?:
@@ -35,7 +46,10 @@ class RPXTransactions {
    * Fetches all transaction for account
    * @link https://razorpay.com/docs/api/x/transactions
    */
-  async getAll(accountNumber: Transaction['account_number'], filter: Pageable = {}): Promise<Response<Transaction>> {
+  async getAll(
+    accountNumber: Transaction["account_number"],
+    filter: Pageable = {}
+  ): Promise<Response<Transaction>> {
     return this.client.load<Response<Transaction>>(`/transactions`, "GET", {
       account_number: accountNumber,
       ...filter,
@@ -45,10 +59,8 @@ class RPXTransactions {
    * Fetches details of a transaction for account
    * @link https://razorpay.com/docs/api/x/transactions#fetch-transaction-by-id
    */
-  async get(transactionId: Transaction['id']): Promise<Transaction> {
-    return this.client.load<Transaction>(
-      `/transactions/${transactionId}`
-    );
+  async get(transactionId: Transaction["id"]): Promise<Transaction> {
+    return this.client.load<Transaction>(`/transactions/${transactionId}`);
   }
 }
 
