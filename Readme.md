@@ -103,14 +103,6 @@ FundAccount.create(accountInfo)
 
 You can find `accountInfo` possibles values [here](https://razorpay.com/docs/razorpayx/api/fund-accounts/#request-parameters)
 
-`createPublic` - Creates a public fund account for a contact, this is specifically used for Card payout. Read more [here](https://razorpay.com/docs/razorpayx/api/payouts-cards/)
-
-```
-FundAccount.createPublic(accountInfo)
-```
-
-You can find `accountInfo` possibles values [here](https://razorpay.com/docs/razorpayx/api/fund-accounts/#request-parameters)
-
 `getAll` - Fetches all the fund accounts
 
 ```
