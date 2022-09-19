@@ -6,6 +6,16 @@ Official documentation: https://razorpay.com/docs/razorpayx/api/
 
 Repository documenation: https://razorpayx-docs.netlify.app/
 
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=sonu-os&metric=bugs)](https://sonarcloud.io/summary/new_code?id=sonu-os)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sonu-os&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=sonu-os)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=sonu-os&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=sonu-os)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=sonu-os&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=sonu-os)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=sonu-os&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=sonu-os)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sonu-os&metric=coverage)](https://sonarcloud.io/summary/new_code?id=sonu-os)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=sonu-os&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=sonu-os)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=sonu-os&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=sonu-os)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sonu-os&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=sonu-os)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sonu-os&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=sonu-os)
 
 ## Installation
 
