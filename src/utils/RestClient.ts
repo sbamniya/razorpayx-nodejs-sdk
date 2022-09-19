@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosResponse, Method } from "axios";
+import axios, { AxiosRequestConfig, Method } from "axios";
 
 class RestClient {
   private key: string;
@@ -25,7 +25,7 @@ class RestClient {
     params: AxiosRequestConfig["data"] | AxiosRequestConfig["params"] = {},
     options: AxiosRequestConfig = {}
   ): Promise<T> {
-    const token = `Basic ${Buffer.from(`${this.key}:${this.secret}`).toString(
+    const token = `Basic ${Buffer.from(this.key + ":" + this.secret).toString(
       "base64"
     )}`;
 
