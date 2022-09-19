@@ -2,7 +2,9 @@
 
 Note: This is not an official sdk.
 
-Read documentation here: https://razorpay.com/docs/razorpayx/api/
+Official documentation: https://razorpay.com/docs/razorpayx/api/
+
+Repository documenation: https://razorpayx-docs.netlify.app/
 
 
 ## Installation
