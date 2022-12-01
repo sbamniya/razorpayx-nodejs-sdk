@@ -18,16 +18,18 @@ Repository documenation: https://razorpayx-docs.netlify.app/
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sonu-os&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=sonu-os)
 
 ## Installation
-
-> npm install razorpayx-nodejs-sdk
+```sh
+npm install razorpayx-nodejs-sdk
+```
 
 <p>or</p>
 
-> yarn add razorpayx-nodejs-sdk
-
+```sh
+yarn add razorpayx-nodejs-sdk
+```
 ## Usage
 
-```
+```JavaScript
 const { Contact } = require("razorpayx-nodejs-sdk")("key", "secret");
 
 // create new contact
@@ -58,14 +60,14 @@ A Contact is an entity to whom payouts can be made through supported modes such 
 `create` - Create a contact.
 Example:
 
-```
+```JavaScript
 Contact.create(contactInfo)
 ```
 
 `update` - updates a contact
 Example:
 
-```
+```JavaScript
 Contact.update("contact_id", contactInfo)
 ```
 
@@ -74,7 +76,7 @@ You can find `contactInfo` possibles values [here](https://razorpay.com/docs/raz
 `getAll` - Get all contacts
 Example:
 
-```
+```JavaScript
 Contact.getAll(filterOptions)
 ```
 
@@ -84,19 +86,19 @@ You can find `filterOptions` possibles values [here](https://razorpay.com/docs/r
 
 Example:
 
-```
+```JavaScript
 Contact.get("contact_id")
 ```
 
 `activate` - Activate contact by contact id
 
-```
+```JavaScript
 Contact.activate("contact_id")
 ```
 
 `deactivate` - Deactivate contact by contact id
 
-```
+```JavaScript
 Contact.deactivate("contact_id")
 ```
 
@@ -109,7 +111,7 @@ Fund accounts are accounts associated with a contact. Payouts are made to fund a
 `create` - Create a fund account.
 Example:
 
-```
+```JavaScript
 FundAccount.create(accountInfo)
 ```
 
@@ -117,7 +119,7 @@ You can find `accountInfo` possibles values [here](https://razorpay.com/docs/raz
 
 `getAll` - Fetches all the fund accounts
 
-```
+```JavaScript
 FundAccount.getAll(filterOptions)
 ```
 
@@ -127,27 +129,27 @@ You can find `filterOptions` possibles values [here](https://razorpay.com/docs/r
 
 Example:
 
-```
+```JavaScript
 FundAccount.get("account_id")
 ```
 
 
 `validate` - Validate the account
 
-```
+```JavaScript
 FundAccount.validate(account)
 ```
 You can find `account` possibles values for validating bank [here](https://razorpay.com/docs/api/x/account-validation#request-parameters-3) and for validating VPA [here](https://razorpay.com/docs/api/x/account-validation#request-parameters-7)
 
 `activate` - Activate fund account by account id
 
-```
+```JavaScript
 FundAccount.activate("account_id")
 ```
 
 `deactivate` - Deactivate fund account by account id
 
-```
+```JavaScript
 FundAccount.deactivate("account_id")
 ```
 
@@ -160,7 +162,7 @@ A payout is the transfer of funds from your business account to a contact's fund
 `create` - Create a payout.
 Example:
 
-```
+```JavaScript
 Payout.create(payoutInfo)
 ```
 
@@ -168,7 +170,7 @@ You can find `payoutInfo` possibles values [here](https://razorpay.com/docs/razo
 
 `getAll` - Fetches all the payouts
 
-```
+```JavaScript
 Payout.getAll(account_number, filterOptions)
 ```
 
@@ -181,7 +183,7 @@ You can find `filterOptions` possibles values [here](https://razorpay.com/docs/r
 
 Example:
 
-```
+```JavaScript
 Payout.get("payout_id")
 ```
 
@@ -191,7 +193,7 @@ Payout.get("payout_id")
 <em>Note: You can only cancel payouts that are in the queued state. It is not possible to cancel payouts that have any other status.</em>
 </p>
 
-```
+```JavaScript
 Payout.cancel("payout_id")
 ```
 
@@ -204,7 +206,7 @@ Payout Links enable you to make payouts to those contacts whose fund accounts de
 `create` - Create a payout link.
 Example:
 
-```
+```JavaScript
 PayoutLink.create(payoutLinkInfo)
 ```
 
@@ -212,7 +214,7 @@ You can find `payoutLinkInfo` possibles values [here](https://razorpay.com/docs/
 
 `getAll` - Fetches all the payout links
 
-```
+```JavaScript
 PayoutLink.getAll(filterOptions)
 ```
 
@@ -222,7 +224,7 @@ You can find `filterOptions` possibles values [here](https://razorpay.com/docs/r
 
 Example:
 
-```
+```JavaScript
 PayoutLink.get("payout_link_id")
 ```
 
@@ -232,7 +234,7 @@ PayoutLink.get("payout_link_id")
 <em>Note: You can only cancel payout links in the issued state.</em>
 </p>
 
-```
+```JavaScript
 PayoutLink.cancel("payout_link_id")
 ```
 
@@ -244,7 +246,7 @@ The inflow of funds to your business account, payouts to a contact's fund accoun
 
 `getAll` - Fetches all the transactions
 
-```
+```JavaScript
 Transactions.getAll(accountNumber, filterOptions)
 ```
 
@@ -257,7 +259,7 @@ You can find `filterOptions` possibles values [here](https://razorpay.com/docs/r
 
 Example:
 
-```
+```JavaScript
 Transactions.get("transaction_id")
 ```
 
@@ -265,6 +267,6 @@ Transactions.get("transaction_id")
 
 If you find any issue please add it to the issues tab.
 
-> Missing any important feature? Create an issue here: [here](https://github.com/sbamniya/razorpayx-nodejs-sdk/issues/new)
+Missing any important feature? Create an issue here: [here](https://github.com/sbamniya/razorpayx-nodejs-sdk/issues/new)
 
 PRs are welcome.
